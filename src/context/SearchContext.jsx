@@ -15,22 +15,22 @@ const PAGES = [
   },
   {
     path: '/morphology',
-    title: 'Зовнішній вигляд зайців',
+    title: 'Зовнішній вигляд коал',
     component: Morphology
   },
   {
     path: '/nutrition',
-    title: 'Харчування зайців',
+    title: 'Харчування коал',
     component: Nutrition
   },
   {
     path: '/population',
-    title: 'Ареал зайців',
+    title: 'Ареал коал',
     component: Population
   },
   {
     path: '/photo',
-    title: 'Фотографії зайців',
+    title: 'Фотографії коал',
     component: Photo
   }
 ];
