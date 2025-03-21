@@ -22,8 +22,8 @@ function Header() {
         <div className="logo-container">
           <Link to="/" className="text-white text-decoration-none d-flex align-items-center">
             <img 
-              src="/images/european-hare-6121jpg.webp" 
-              alt="Заєць" 
+              src="/images/everyday-carry-flickr-3bsjpg.webp" 
+              alt="Коала" 
               className="site-logo rounded-circle me-2"
             />
             <span className="fs-4">Сайт про коал</span>

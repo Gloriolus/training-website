@@ -3,12 +3,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function Photo() {
   const images = [
-    { src: '/images/1200px-haas-in-het-grasjpg.webp', alt: 'Зайці в траві' },
-    { src: '/images/1200px-hasebeioberwerbejpg.webp', alt: 'Зайці в полі' },
-    { src: '/images/european-hare-6121jpg.webp', alt: 'Європейський заєць' },
-    { src: '/images/fFKuESpf7VTCGBNPscig.webp', alt: 'Зайці на лузі' },
-    { src: '/images/halljnes.webp', alt: 'Зайці в лісі' },
-    { src: '/images/zu6YRoYqGYVyExZ54dDT.webp', alt: 'Зайці на лузі' }
+    { src: '/images/1200px-afternoon-nap-147513865jpeg.webp', alt: 'Коала на дереві 1' },
+    { src: '/images/australia-2017-45-42510471610jpg.webp', alt: 'Коала на дереві 2' },
+    { src: '/images/everyday-carry-flickr-3bsjpg.webp', alt: 'Коала в лісі' },
+    { src: '/images/koala-phascolarctos-cinereus-26748321945jpg.webp', alt: 'Виглядаюча коала' },
+    { src: '/images/koala-takes-a-nap-over-a-big-branch-raymond-island-gippsland-lakes-coastal-park-victoriajpg.webp', alt: 'Спляча коала' },
+    { src: '/images/phascolarctos-cinereus-31890941923jpg.webp', alt: 'Коала в ночі' }
   ];
 
   return (
