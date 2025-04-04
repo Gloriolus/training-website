@@ -301,7 +301,7 @@ describe('API вебдодатку сайту про коал', () => {
                 // height і weight навмисно відсутні
                 gender: 'female',
                 description: 'Оновлений опис',
-                eatenEucalyptus: '2 кілограма',
+                eatenEucalyptus: '3 кілограма',
             };
 
             // Виконуємо PATCH-запит
@@ -314,6 +314,7 @@ describe('API вебдодатку сайту про коал', () => {
             expect(res).to.have.status(200);
             expect(res.body).to.have.property('name', 'Оновлений');
             expect(res.body).to.have.property('age', 2);
+            expect(res.body).to.have.property('eatenEucalyptus', '3 кілограма');
             // Ці поля мають зберегти свої початкові значення
             expect(res.body).to.have.property('height', 25);
             expect(res.body).to.have.property('weight', 1.8);
