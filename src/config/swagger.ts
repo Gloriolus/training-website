@@ -4,9 +4,9 @@ export const swaggerSpec = {
     openapi: '3.0.0',
     // Загальна інформація про API
     info: {
-        title: 'API Сайту про Зайців',
+        title: 'API Сайту про Коал',
         version: '1.0.0',
-        description: 'Документація API для Сайту про Зайців',
+        description: 'Документація API для Сайту про Коал',
     },
     // Налаштування серверів для тестування API
     servers: [
@@ -21,12 +21,12 @@ export const swaggerSpec = {
     // Визначення роутерів API та операцій з ними
     paths: {
         '/api/koalas': {
-            // GET запит для отримання всіх зайців
+            // GET запит для отримання всіх коал
             get: {
-                summary: 'Отримати всіх зайців',
+                summary: 'Отримати всіх коал',
                 responses: {
                     '200': {
-                        description: 'Список всіх зайців',
+                        description: 'Список всіх коал',
                         content: {
                             'application/json': {
                                 schema: {
@@ -39,9 +39,9 @@ export const swaggerSpec = {
                 },
             },
 
-            // POST запит для створення нового зайця
+            // POST запит для створення нового коалу
             post: {
-                summary: 'Створити нового зайця',
+                summary: 'Створити нового коалу',
                 requestBody: {
                     required: true,
                     content: {
@@ -52,7 +52,7 @@ export const swaggerSpec = {
                 },
                 responses: {
                     '201': {
-                        description: "Створений об'єкт зайця",
+                        description: "Створений об'єкт коалу",
                         content: {
                             'application/json': {
                                 schema: { $ref: '#/components/schemas/Koala' },
@@ -63,43 +63,43 @@ export const swaggerSpec = {
             },
         },
 
-        // Операції для конкретного зайця за ID
+        // Операції для конкретного коалу за ID
         '/api/koalas/{id}': {
-            // GET запит для отримання зайця за ID
+            // GET запит для отримання коалу за ID
             get: {
-                summary: 'Отримати зайця за ID',
+                summary: 'Отримати коалу за ID',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID коалу',
                     },
                 ],
                 responses: {
                     '200': {
-                        description: "Об'єкт зайця",
+                        description: "Об'єкт коалу",
                         content: {
                             'application/json': {
                                 schema: { $ref: '#/components/schemas/Koala' },
                             },
                         },
                     },
-                    '404': { description: 'Зайця не знайдено' },
+                    '404': { description: 'Коалу не знайдено' },
                 },
             },
 
-            // PUT запит для повного оновлення зайця за ID
+            // PUT запит для повного оновлення коалу за ID
             put: {
-                summary: 'Повністю оновити зайця',
+                summary: 'Повністю оновити коалу',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID коалу',
                     },
                 ],
                 requestBody: {
@@ -112,26 +112,26 @@ export const swaggerSpec = {
                 },
                 responses: {
                     '200': {
-                        description: "Оновлений об'єкт зайця",
+                        description: "Оновлений об'єкт коалу",
                         content: {
                             'application/json': {
                                 schema: { $ref: '#/components/schemas/Koala' },
                             },
                         },
                     },
-                    '404': { description: 'Зайця не знайдено' },
+                    '404': { description: 'Коалу не знайдено' },
                 },
             },
-            // PATCH запит для часткового оновлення зайця за ID
+            // PATCH запит для часткового оновлення коалу за ID
             patch: {
-                summary: 'Частково оновити зайця',
+                summary: 'Частково оновити коалу',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID коалу',
                     },
                 ],
                 requestBody: {
@@ -144,31 +144,31 @@ export const swaggerSpec = {
                 },
                 responses: {
                     '200': {
-                        description: "Оновлений об'єкт зайця",
+                        description: "Оновлений об'єкт коалу",
                         content: {
                             'application/json': {
                                 schema: { $ref: '#/components/schemas/Koala' },
                             },
                         },
                     },
-                    '404': { description: 'Зайця не знайдено' },
+                    '404': { description: 'Коалу не знайдено' },
                 },
             },
-            // DELETE запит для видалення даних про зайця за ID
+            // DELETE запит для видалення даних про коалу за ID
             delete: {
-                summary: 'Видалити дані про зайця',
+                summary: 'Видалити дані про коалу',
                 parameters: [
                     {
                         in: 'path',
                         name: 'id',
                         required: true,
                         schema: { type: 'string' },
-                        description: 'ID зайця',
+                        description: 'ID коалу',
                     },
                 ],
                 responses: {
                     '200': { description: 'Повідомлення про успішне видалення' },
-                    '404': { description: 'Зайця не знайдено' },
+                    '404': { description: 'Коалу не знайдено' },
                 },
             },
         },
@@ -178,35 +178,35 @@ export const swaggerSpec = {
     components: {
         // Схеми даних
         schemas: {
-            // Схема об'єкта Заєць
+            // Схема об'єкта Коала
             Koala: {
                 type: 'object',
                 required: ['name', 'age', 'height', 'weight', 'gender'],
                 properties: {
                     name: {
                         type: 'string',
-                        description: "Ім'я зайця",
+                        description: "Ім'я коалу",
                     },
                     age: {
                         type: 'number',
-                        description: 'Вік зайця у роках',
+                        description: 'Вік коалу у роках',
                     },
                     height: {
                         type: 'number',
-                        description: 'Висота зайця в сантиметрах',
+                        description: 'Висота коалу в сантиметрах',
                     },
                     weight: {
                         type: 'number',
-                        description: 'Вага зайця в кілограмах',
+                        description: 'Вага коалу в кілограмах',
                     },
                     gender: {
                         type: 'string',
                         enum: ['male', 'female'],
-                        description: 'Стать зайця',
+                        description: 'Стать коалу',
                     },
                     description: {
                         type: 'string',
-                        description: "Опис зайця (необов'язкове поле)",
+                        description: "Опис коалу (необов'язкове поле)",
                     },
                 },
             },

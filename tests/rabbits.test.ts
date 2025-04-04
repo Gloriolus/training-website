@@ -12,8 +12,8 @@ import mongoose from 'mongoose';
 const { expect } = chai;
 chai.use(chaiHttp);
 
-// Тести API вебдодатку сайту про зайців
-describe('API вебдодатку сайту про зайців', () => {
+// Тести API вебдодатку сайту про коал
+describe('API вебдодатку сайту про коал', () => {
     // Отримуємо екземпляр бази даних з контейнера
     const database = container.get<IDatabase>(TYPES.IDatabase);
     // Створюємо спеціальний URI для тестової бази даних
@@ -53,25 +53,25 @@ describe('API вебдодатку сайту про зайців', () => {
         });
     });
 
-    // Перед кожним тестом очищуємо колекцію зайців
+    // Перед кожним тестом очищуємо колекцію коал
     beforeEach(async () => {
         await Koala.deleteMany({});
     });
 
-    // Тести для створення запису про нового зайця (POST-запит)
+    // Тести для створення запису про нового коалу (POST-запит)
     describe('POST /api/koalas', () => {
-        it('має створити запис про нового зайця', done => {
-            // Тестові дані зайця
+        it('має створити запис про нового коалу', done => {
+            // Тестові дані коалу
             const koala = {
                 name: 'Вухань',
                 age: 2,
                 height: 30,
                 weight: 2.5,
                 gender: 'male' as const,
-                description: 'Сірий заєць',
+                description: 'Сірий коала',
             };
 
-            // Виконуємо POST-запит для створення запису про зайця
+            // Виконуємо POST-запит для створення запису про коалу
             chai.request(app)
                 .post('/api/koalas')
                 .send(koala)
@@ -94,48 +94,48 @@ describe('API вебдодатку сайту про зайців', () => {
         });
     });
 
-    // Тести для отримання всіх записів зайців (GET-запит)
+    // Тести для отримання всіх записів коал (GET-запит)
     describe('GET /api/koalas', () => {
-        it('має отримати всіх зайців', async () => {
-            // Створюємо тестовий запис зайця
+        it('має отримати всіх коал', async () => {
+            // Створюємо тестовий запис коалу
             const testKoala = new Koala({
                 name: 'Білан',
                 age: 3,
                 height: 35,
                 weight: 3.2,
                 gender: 'male',
-                description: 'Білий заєць',
+                description: 'Білий коала',
             });
             await testKoala.save();
 
-            // Виконуємо GET-запит для отримання всіх записів зайців
+            // Виконуємо GET-запит для отримання всіх записів коал
             const res = await chai.request(app).get('/api/koalas');
             expect(res).to.have.status(200);
             expect(res.body).to.be.an('array');
             expect(res.body.length).to.equal(1);
             expect(res.body[0]).to.have.property('name', 'Білан');
             expect(res.body[0]).to.have.property('gender', 'male');
-            expect(res.body[0]).to.have.property('description', 'Білий заєць');
+            expect(res.body[0]).to.have.property('description', 'Білий коала');
             expect(res.body[0]).to.have.property('dateAdded');
             expect(new Date(res.body[0].dateAdded)).to.be.instanceOf(Date);
         });
     });
 
-    // Тести для отримання запису конкретного зайця за ID (GET-запит)
+    // Тести для отримання запису конкретного коалу за ID (GET-запит)
     describe('GET /api/koalas/:id', () => {
-        it('має отримати конкретного зайця за id', async () => {
-            // Створюємо запис тестового зайця
+        it('має отримати конкретного коалу за id', async () => {
+            // Створюємо запис тестового коалу
             const testKoala = new Koala({
                 name: 'Косий',
                 age: 1,
                 height: 25,
                 weight: 1.8,
                 gender: 'male',
-                description: 'Коричневий заєць',
+                description: 'Коричневий коала',
             });
             const savedKoala = await testKoala.save();
 
-            // Виконуємо GET-запит для отримання запису зайця за ID
+            // Виконуємо GET-запит для отримання запису коалу за ID
             const res = await chai.request(app).get(`/api/koalas/${String(savedKoala._id)}`);
             expect(res).to.have.status(200);
             expect(res.body).to.have.property('name', 'Косий');
@@ -143,20 +143,20 @@ describe('API вебдодатку сайту про зайців', () => {
             expect(res.body).to.have.property('height', 25);
             expect(res.body).to.have.property('weight', 1.8);
             expect(res.body).to.have.property('gender', 'male');
-            expect(res.body).to.have.property('description', 'Коричневий заєць');
+            expect(res.body).to.have.property('description', 'Коричневий коала');
         });
 
-        it('має повернути 404 для неіснуючого зайця', async () => {
-            // Виконуємо GET-запит для неіснуючого ID зайця
+        it('має повернути 404 для неіснуючого коалу', async () => {
+            // Виконуємо GET-запит для неіснуючого ID коалу
             const res = await chai.request(app).get('/api/koalas/654321654321654321654321');
             expect(res).to.have.status(404);
         });
     });
 
-    // Тести для повного оновлення запису про зайця (PUT-запит)
+    // Тести для повного оновлення запису про коалу (PUT-запит)
     describe('PUT /api/koalas/:id', () => {
-        it('має повністю оновити запис про зайця', async () => {
-            // Створюємо тестового зайця
+        it('має повністю оновити запис про коалу', async () => {
+            // Створюємо тестового коалу
             const testKoala = new Koala({
                 name: 'Оригінальний',
                 age: 1,
@@ -167,7 +167,7 @@ describe('API вебдодатку сайту про зайців', () => {
             });
             const savedKoala = await testKoala.save();
 
-            // Дані для оновлення зайця
+            // Дані для оновлення коалу
             const updatedData = {
                 name: 'Оновлений',
                 age: 2,
@@ -177,7 +177,7 @@ describe('API вебдодатку сайту про зайців', () => {
                 description: 'Оновлений опис',
             };
 
-            // Виконуємо PUT-запит для повного оновлення запису про зайця
+            // Виконуємо PUT-запит для повного оновлення запису про коалу
             const res = await chai
                 .request(app)
                 .put(`/api/koalas/${String(savedKoala._id)}`)
@@ -196,7 +196,7 @@ describe('API вебдодатку сайту про зайців', () => {
         });
 
         it("має завершитися невдачею при відсутності обов'язкових полів", async () => {
-            // Створюємо тестового зайця
+            // Створюємо тестового коалу
             const testKoala = new Koala({
                 name: 'Оригінальний',
                 age: 1,
@@ -225,7 +225,7 @@ describe('API вебдодатку сайту про зайців', () => {
             // Перевіряємо, що запит завершився з помилкою
             expect(res).to.have.status(400);
 
-            // Перевіряємо, що заєць не змінився
+            // Перевіряємо, що коала не змінився
             const unchangedKoala = await Koala.findById(savedKoala._id);
             expect(unchangedKoala).to.have.property('name', 'Оригінальний');
             expect(unchangedKoala).to.have.property('height', 25);
@@ -233,10 +233,10 @@ describe('API вебдодатку сайту про зайців', () => {
         });
     });
 
-    // Тести для часткового оновлення запису про зайця (PATCH-запит)
+    // Тести для часткового оновлення запису про коалу (PATCH-запит)
     describe('PATCH /api/koalas/:id', () => {
-        it('має частково оновити запис про зайця', async () => {
-            // Створюємо тестового зайця
+        it('має частково оновити запис про коалу', async () => {
+            // Створюємо тестового коалу
             const testKoala = new Koala({
                 name: 'Оригінальний',
                 age: 1,
@@ -273,7 +273,7 @@ describe('API вебдодатку сайту про зайців', () => {
         });
 
         it('демонструє різницю між PATCH і PUT з частковими оновленнями', async () => {
-            // Створюємо тестового зайця
+            // Створюємо тестового коалу
             const testKoala = new Koala({
                 name: 'Оригінальний',
                 age: 1,
@@ -337,26 +337,26 @@ describe('API вебдодатку сайту про зайців', () => {
         });
     });
 
-    // Тести для видалення запису зайця (DELETE-запит)
+    // Тести для видалення запису коалу (DELETE-запит)
     describe('DELETE /api/koalas/:id', () => {
-        it('має видалити запис про зайця', async () => {
-            // Створюємо тестового зайця
+        it('має видалити запис про коалу', async () => {
+            // Створюємо тестового коалу
             const testKoala = new Koala({
                 name: 'Стрибунець',
                 age: 2,
                 height: 28,
                 weight: 2.1,
                 gender: 'female',
-                description: 'Чорний заєць',
+                description: 'Чорний коала',
             });
             const savedKoala = await testKoala.save();
 
             // Виконуємо DELETE-запит
             const res = await chai.request(app).delete(`/api/koalas/${String(savedKoala._id)}`);
             expect(res).to.have.status(200);
-            expect(res.body).to.have.property('message', 'Запис про зайця видалено');
+            expect(res.body).to.have.property('message', 'Запис про коалу видалено');
 
-            // Перевіряємо, що запис про зайця дійсно видалено з бази
+            // Перевіряємо, що запис про коалу дійсно видалено з бази
             const findKoala = await Koala.findById(savedKoala._id);
             expect(findKoala).to.be.null;
         });

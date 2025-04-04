@@ -1,17 +1,17 @@
 import { Schema, model } from 'mongoose';
 
-// Інтерфейс для об'єкта "Заєць"
+// Інтерфейс для об'єкта "Коала"
 interface IKoala {
-    name: string; // Ім'я зайця
-    age: number; // Вік зайця у роках
-    height: number; // Висота зайця в сантиметрах
-    weight: number; // Вага зайця в кілограмах
-    gender: 'male' | 'female'; // Стать зайця: 'male' - самець, 'female' - самка
-    description?: string; // Опис зайця (необов'язкове поле)
+    name: string; // Ім'я коалу
+    age: number; // Вік коалу у роках
+    height: number; // Висота коалу в сантиметрах
+    weight: number; // Вага коалу в кілограмах
+    gender: 'male' | 'female'; // Стать коалу: 'male' - самець, 'female' - самка
+    description?: string; // Опис коалу (необов'язкове поле)
     dateAdded: Date; // Дата додавання запису до бази даних
 }
 
-// Схема MongoDB для моделі "Заєць"
+// Схема MongoDB для моделі "Коала"
 const koalaSchema = new Schema<IKoala>({
     name: {
         type: String,

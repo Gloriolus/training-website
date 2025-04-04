@@ -4,13 +4,13 @@ import { KoalaRepository } from '../repositories/KoalaRepository';
 
 // Створюємо новий роутер Express
 const router = Router();
-// Отримуємо екземпляр репозиторію зайців з контейнера інверсії залежностей
+// Отримуємо екземпляр репозиторію коал з контейнера інверсії залежностей
 const koalaRepository = container.get(KoalaRepository);
 
-// Роутер для HTTP метода GET / - отримання всіх записів зайців
+// Роутер для HTTP метода GET / - отримання всіх записів коал
 router.get('/', (async (_req: Request, res: Response) => {
     try {
-        // Отримуємо всі записи зайців з бази даних через репозиторій
+        // Отримуємо всі записи коал з бази даних через репозиторій
         const koalas = await koalaRepository.findAll();
         res.json(koalas);
     } catch (error) {
@@ -20,16 +20,16 @@ router.get('/', (async (_req: Request, res: Response) => {
     }
 }) as unknown as (req: Request, res: Response) => void);
 
-// Роутер для HTTP метода GET /:id - отримання запису одного зайця за ідентифікатором
+// Роутер для HTTP метода GET /:id - отримання запису одного коалу за ідентифікатором
 router.get('/:id', (async (req: Request, res: Response) => {
     try {
-        // Пошук зайця за ідентифікатором
+        // Пошук коалу за ідентифікатором
         const koala = await koalaRepository.findById(req.params.id);
         if (koala) {
             res.json(koala);
         } else {
-            // Якщо заєць не знайдений, повертаємо 404 помилку
-            res.status(404).json({ message: 'Запис зайця не знайдено' });
+            // Якщо коала не знайдений, повертаємо 404 помилку
+            res.status(404).json({ message: 'Запис коалу не знайдено' });
         }
     } catch (error) {
         // Обробка помилки
@@ -38,12 +38,12 @@ router.get('/:id', (async (req: Request, res: Response) => {
     }
 }) as unknown as (req: Request, res: Response) => void);
 
-// Роутер для HTTP метода POST / - створення нового запису зайця
+// Роутер для HTTP метода POST / - створення нового запису коалу
 router.post('/', (async (req: Request, res: Response) => {
     try {
-        // Створюємо новий запис зайця з даних запиту
+        // Створюємо новий запис коалу з даних запиту
         const newKoala = await koalaRepository.create(req.body);
-        // Повертаємо статус 201 (Created) і дані створеного зайця
+        // Повертаємо статус 201 (Created) і дані створеного коалу
         res.status(201).json(newKoala);
     } catch (error) {
         // Обробка помилки
@@ -52,7 +52,7 @@ router.post('/', (async (req: Request, res: Response) => {
     }
 }) as unknown as (req: Request, res: Response) => void);
 
-// Роутер для HTTP метода PUT /:id - повне оновлення запису зайця
+// Роутер для HTTP метода PUT /:id - повне оновлення запису коалу
 router.put('/:id', (async (req: Request, res: Response) => {
     try {
         // Перевірка наявності всіх обов'язкових полів для PUT запиту
@@ -66,13 +66,13 @@ router.put('/:id', (async (req: Request, res: Response) => {
             });
         }
 
-        // Оновлюємо зайця з вказаним ID
+        // Оновлюємо коалу з вказаним ID
         const koala = await koalaRepository.update(req.params.id, req.body);
         if (koala) {
             return res.json(koala);
         } else {
-            // Якщо заєць не знайдений, повертаємо 404 помилку
-            return res.status(404).json({ message: 'Запис зайця не знайдено' });
+            // Якщо коала не знайдений, повертаємо 404 помилку
+            return res.status(404).json({ message: 'Запис коалу не знайдено' });
         }
     } catch (error) {
         // Обробка помилки
@@ -81,16 +81,16 @@ router.put('/:id', (async (req: Request, res: Response) => {
     }
 }) as unknown as (req: Request, res: Response) => void);
 
-// Роутер для HTTP метода PATCH /:id - часткове оновлення запису зайця
+// Роутер для HTTP метода PATCH /:id - часткове оновлення запису коалу
 router.patch('/:id', (async (req: Request, res: Response) => {
     try {
-        // Часткове оновлення запису зайця - передаються лише ті поля, які потрібно змінити
+        // Часткове оновлення запису коалу - передаються лише ті поля, які потрібно змінити
         const koala = await koalaRepository.patch(req.params.id, req.body);
         if (koala) {
             res.json(koala);
         } else {
-            // Якщо заєць не знайдений, повертаємо 404 помилку
-            res.status(404).json({ message: 'Запис зайця не знайдено' });
+            // Якщо коала не знайдений, повертаємо 404 помилку
+            res.status(404).json({ message: 'Запис коалу не знайдено' });
         }
     } catch (error) {
         // Обробка помилки
@@ -99,17 +99,17 @@ router.patch('/:id', (async (req: Request, res: Response) => {
     }
 }) as unknown as (req: Request, res: Response) => void);
 
-// Роутер для HTTP метода DELETE /:id - видалення запису зайця
+// Роутер для HTTP метода DELETE /:id - видалення запису коалу
 router.delete('/:id', (async (req: Request, res: Response) => {
     try {
-        // Видаляємо дані про зайця за ID
+        // Видаляємо дані про коалу за ID
         const koala = await koalaRepository.delete(req.params.id);
         if (koala) {
             // У разі успіху повертаємо повідомлення про видалення
-            res.json({ message: 'Запис про зайця видалено' });
+            res.json({ message: 'Запис про коалу видалено' });
         } else {
-            // Якщо заєць не знайдений, повертаємо 404 помилку
-            res.status(404).json({ message: 'Запис про зайця не знайдено' });
+            // Якщо коала не знайдений, повертаємо 404 помилку
+            res.status(404).json({ message: 'Запис про коалу не знайдено' });
         }
     } catch (error) {
         // Обробка помилки
