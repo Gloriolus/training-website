@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 // Інтерфейс для об'єкта "Заєць"
-interface IRabbit {
+interface IKoala {
     name: string; // Ім'я зайця
     age: number; // Вік зайця у роках
     height: number; // Висота зайця в сантиметрах
@@ -12,7 +12,7 @@ interface IRabbit {
 }
 
 // Схема MongoDB для моделі "Заєць"
-const rabbitSchema = new Schema<IRabbit>({
+const koalaSchema = new Schema<IKoala>({
     name: {
         type: String,
         required: true, // Поле є обов'язковим
@@ -42,5 +42,5 @@ const rabbitSchema = new Schema<IRabbit>({
 });
 
 // Створення моделі Mongoose на основі схеми
-export const Rabbit = model<IRabbit>('Rabbit', rabbitSchema);
-export type { IRabbit }; // Експортуємо інтерфейс для використання в інших файлах
+export const Koala = model<IKoala>('Koala', koalaSchema);
+export type { IKoala }; // Експортуємо інтерфейс для використання в інших файлах
