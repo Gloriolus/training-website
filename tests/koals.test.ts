@@ -69,6 +69,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 2.5,
                 gender: 'male' as const,
                 description: 'Сірий коала',
+                eatenEucalyptus: '2 кілограма',
             };
 
             // Виконуємо POST-запит для створення запису про коалу
@@ -105,6 +106,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 3.2,
                 gender: 'male',
                 description: 'Білий коала',
+                eatenEucalyptus: '2 кілограма',
             });
             await testKoala.save();
 
@@ -132,6 +134,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 1.8,
                 gender: 'male',
                 description: 'Коричневий коала',
+                eatenEucalyptus: '2 кілограма',
             });
             const savedKoala = await testKoala.save();
 
@@ -164,6 +167,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 1.8,
                 gender: 'male',
                 description: 'Початковий опис',
+                eatenEucalyptus: '2 кілограма',
             });
             const savedKoala = await testKoala.save();
 
@@ -175,6 +179,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 2.5,
                 gender: 'female',
                 description: 'Оновлений опис',
+                eatenEucalyptus: '2 кілограма',
             };
 
             // Виконуємо PUT-запит для повного оновлення запису про коалу
@@ -204,6 +209,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 1.8,
                 gender: 'male',
                 description: 'Початковий опис',
+                eatenEucalyptus: '2 кілограма',
             });
             const savedKoala = await testKoala.save();
 
@@ -214,6 +220,7 @@ describe('API вебдодатку сайту про коал', () => {
                 // height і weight відсутні
                 gender: 'female',
                 description: 'Оновлений опис',
+                eatenEucalyptus: '2 кілограма',
             };
 
             // Виконуємо PUT-запит з неповними даними
@@ -244,6 +251,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 1.8,
                 gender: 'male',
                 description: 'Початковий опис',
+                eatenEucalyptus: '2 кілограма',
             });
             const savedKoala = await testKoala.save();
 
@@ -252,6 +260,7 @@ describe('API вебдодатку сайту про коал', () => {
                 name: 'Частково оновлений',
                 age: 3,
                 description: 'Оновлений опис',
+                eatenEucalyptus: '2 кілограма',
             };
 
             // Виконуємо PATCH-запит
@@ -281,6 +290,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 1.8,
                 gender: 'male',
                 description: 'Початковий опис',
+                eatenEucalyptus: '2 кілограма',
             });
             const savedKoala = await testKoala.save();
 
@@ -291,6 +301,7 @@ describe('API вебдодатку сайту про коал', () => {
                 // height і weight навмисно відсутні
                 gender: 'female',
                 description: 'Оновлений опис',
+                eatenEucalyptus: '2 кілограма',
             };
 
             // Виконуємо PATCH-запит
@@ -348,6 +359,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 2.1,
                 gender: 'female',
                 description: 'Чорний коала',
+                eatenEucalyptus: '2 кілограма',
             });
             const savedKoala = await testKoala.save();
 

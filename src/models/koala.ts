@@ -9,6 +9,7 @@ interface IKoala {
     gender: 'male' | 'female'; // Стать коалу: 'male' - самець, 'female' - самка
     description?: string; // Опис коалу (необов'язкове поле)
     dateAdded: Date; // Дата додавання запису до бази даних
+    eatenEucalyptus: string; // Кількість з'їденого листя евкаліпту за день, кг
 }
 
 // Схема MongoDB для моделі "Коала"
@@ -38,6 +39,10 @@ const koalaSchema = new Schema<IKoala>({
     dateAdded: {
         type: Date,
         default: Date.now, // Значення за замовчуванням - поточна дата і час
+    },
+    eatenEucalyptus: {
+        type: String,
+        required: true, // Поле є обов'язковим
     },
 });
 
