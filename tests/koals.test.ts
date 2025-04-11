@@ -89,6 +89,7 @@ describe('API вебдодатку сайту про коал', () => {
                     expect(res.body).to.have.property('gender', koala.gender);
                     expect(res.body).to.have.property('description', koala.description);
                     expect(res.body).to.have.property('dateAdded');
+                    expect(res.body).to.have.property('eatenEucalyptus', '2 кілограма');
                     expect(new Date(res.body.dateAdded)).to.be.instanceOf(Date);
                     done();
                 });
@@ -119,6 +120,7 @@ describe('API вебдодатку сайту про коал', () => {
             expect(res.body[0]).to.have.property('gender', 'male');
             expect(res.body[0]).to.have.property('description', 'Білий коала');
             expect(res.body[0]).to.have.property('dateAdded');
+            expect(res.body[0]).to.have.property('eatenEucalyptus', '2 кілограма');
             expect(new Date(res.body[0].dateAdded)).to.be.instanceOf(Date);
         });
     });
@@ -147,6 +149,7 @@ describe('API вебдодатку сайту про коал', () => {
             expect(res.body).to.have.property('weight', 1.8);
             expect(res.body).to.have.property('gender', 'male');
             expect(res.body).to.have.property('description', 'Коричневий коала');
+            expect(res.body).to.have.property('eatenEucalyptus', '2 кілограма');
         });
 
         it('має повернути 404 для неіснуючого коалу', async () => {
@@ -179,7 +182,7 @@ describe('API вебдодатку сайту про коал', () => {
                 weight: 2.5,
                 gender: 'female',
                 description: 'Оновлений опис',
-                eatenEucalyptus: '2 кілограма',
+                eatenEucalyptus: '3 кілограма',
             };
 
             // Виконуємо PUT-запит для повного оновлення запису про коалу
@@ -197,6 +200,7 @@ describe('API вебдодатку сайту про коал', () => {
             expect(res.body).to.have.property('gender', 'female');
             expect(res.body).to.have.property('description', 'Оновлений опис');
             expect(res.body).to.have.property('dateAdded');
+            expect(res.body).to.have.property('eatenEucalyptus', '3 кілограма');
             expect(new Date(res.body.dateAdded)).to.be.instanceOf(Date);
         });
 
@@ -237,6 +241,7 @@ describe('API вебдодатку сайту про коал', () => {
             expect(unchangedKoala).to.have.property('name', 'Оригінальний');
             expect(unchangedKoala).to.have.property('height', 25);
             expect(unchangedKoala).to.have.property('weight', 1.8);
+            expect(unchangedKoala).to.have.property('eatenEucalyptus', '2 кілограма');
         });
     });
 
@@ -260,7 +265,7 @@ describe('API вебдодатку сайту про коал', () => {
                 name: 'Частково оновлений',
                 age: 3,
                 description: 'Оновлений опис',
-                eatenEucalyptus: '2 кілограма',
+                eatenEucalyptus: '3 кілограма',
             };
 
             // Виконуємо PATCH-запит
@@ -278,6 +283,7 @@ describe('API вебдодатку сайту про коал', () => {
             expect(res.body).to.have.property('gender', 'male');
             expect(res.body).to.have.property('description', 'Оновлений опис');
             expect(res.body).to.have.property('dateAdded');
+            expect(res.body).to.have.property('eatenEucalyptus', '3 кілограма');
             expect(new Date(res.body.dateAdded)).to.be.instanceOf(Date);
         });
 
