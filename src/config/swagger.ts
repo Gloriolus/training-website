@@ -75,6 +75,7 @@ export const swaggerSpec = {
                         required: true,
                         schema: { type: 'string' },
                         description: 'ID коалу',
+                        eatenEucalyptus: '',
                     },
                 ],
                 responses: {
@@ -100,6 +101,7 @@ export const swaggerSpec = {
                         required: true,
                         schema: { type: 'string' },
                         description: 'ID коалу',
+                        eatenEucalyptus: '',
                     },
                 ],
                 requestBody: {
@@ -132,6 +134,7 @@ export const swaggerSpec = {
                         required: true,
                         schema: { type: 'string' },
                         description: 'ID коалу',
+                        eatenEucalyptus: '',
                     },
                 ],
                 requestBody: {
@@ -164,6 +167,7 @@ export const swaggerSpec = {
                         required: true,
                         schema: { type: 'string' },
                         description: 'ID коалу',
+                        eatenEucalyptus: '',
                     },
                 ],
                 responses: {
@@ -207,6 +211,10 @@ export const swaggerSpec = {
                     description: {
                         type: 'string',
                         description: "Опис коалу (необов'язкове поле)",
+                    },
+                    eatenEucalyptus: {
+                        type: 'string',
+                        description: 'Кількість зїдання  евкалипта в день',
                     },
                 },
             },
