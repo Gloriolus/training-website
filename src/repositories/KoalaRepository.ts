@@ -10,18 +10,18 @@ export class KoalaRepository {
         return Koala.find();
     }
 
-    // Метод для пошуку коалу за унікальним ідентифікатором
+    // Метод для пошуку коали за унікальним ідентифікатором
     public async findById(id: string): Promise<IKoala | null> {
         return Koala.findById(id);
     }
 
-    // Метод для створення нового коалу в базі даних
+    // Метод для створення нової коали в базі даних
     public async create(koalaData: IKoala): Promise<IKoala> {
         const koala = new Koala(koalaData);
         return koala.save();
     }
 
-    // Метод для видалення коалу за ідентифікатором
+    // Метод для видалення коал за ідентифікатором
     public async delete(id: string): Promise<boolean> {
         const result = await Koala.findByIdAndDelete(id);
         return result !== null;

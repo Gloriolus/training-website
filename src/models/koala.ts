@@ -2,14 +2,14 @@ import { Schema, model } from 'mongoose';
 
 // Інтерфейс для об'єкта "Коала"
 interface IKoala {
-    name: string; // Ім'я коалу
-    age: number; // Вік коалу у роках
-    height: number; // Висота коалу в сантиметрах
-    weight: number; // Вага коалу в кілограмах
-    gender: 'male' | 'female'; // Стать коалу: 'male' - самець, 'female' - самка
-    description?: string; // Опис коалу (необов'язкове поле)
-    dateAdded: Date; // Дата додавання запису до бази даних
+    name: string; // Ім'я коали
+    age: number; // Вік коали у роках
+    height: number; // Висота коали в сантиметрах
+    weight: number; // Вага коали в кілограмах
+    gender: 'male' | 'female'; // Стать коали: 'male' - самець, 'female' - самка
+    description?: string; // Опис коали (необов'язкове поле)
     eatenEucalyptus: string; // Кількість з'їденого листя евкаліпту за день, кг
+    dateAdded: Date; // Дата додавання запису до бази даних
 }
 
 // Схема MongoDB для моделі "Коала"
